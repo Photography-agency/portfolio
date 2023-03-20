@@ -4,7 +4,11 @@ import { Inter } from "next/font/google";
 import Home1 from "../components/Home/Home";
 import { useState } from "react";
 import Link from "next/link";
-
+import Image from "next/image";
+import logo from "/public/img/logo-andy.png"
+import sand1 from "/public/img/sand-1.png";
+import sand2 from "/public/img/sand-2.png";
+import Script from "next/script";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -21,8 +25,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
         
 
-        <script src="/public/js/parallax.js" defer></script>
-        <script src="/public/js/observers.js" defer></script>
+        <Script src="/public/js/parallax.js" ></Script>
+        <Script src="/public/js/observers.js" ></Script>
       </Head>
       
 
@@ -31,9 +35,11 @@ export default function Home() {
         <div className="black-overlay"></div>
         <div className="navigation-fade"></div>
         <a href="https://andyhardy.co" className="logo animatelink">
-          <img
-            src="https://andyhardy.co/assets/img/logo-andy.png"
+          <Image
+            src={logo}
             height="23"
+            width={80}
+            alt={logo}
           />
         </a>
         <nav className={isActive ? "active" : ""}>
@@ -154,16 +160,20 @@ export default function Home() {
         </div>
         {/* Logo */}
         <div className="home-overlay fade-in appear">
-          <img
-            src="https://andyhardy.co/assets/img/logo-andy.png"
+          <Image
+            src={logo}
             height="23"
+            width={80}
+            alt={logo}
           />
         </div>
         <a href="https://andyhardy.co" className="logo-home animatelink">
           <h3 className="logo-name">Andrew Hardy</h3>
-          <img
-            src="https://andyhardy.co/assets/img/logo-andy.png"
+          <Image
+            src={logo}
             height="23"
+            width={80}
+            alt={logo}
           />
         </a>
         {/* Header */}
@@ -233,9 +243,11 @@ export default function Home() {
               }}
             >
               <div className="bottom-fade"></div>
-              <img
-                src="https://andyhardy.co/assets/img/logo-andy.png"
+              <Image
+                src={logo}
                 height="28"
+                width={80}
+                alt={logo}
               />
               <div className="bottom-link">
                 <h3>View portfolio</h3>
@@ -418,7 +430,7 @@ export default function Home() {
                   d="M22,12a11.6,11.6,0,0,1-10,6A11.6,11.6,0,0,1,2,12,11.6,11.6,0,0,1,12,6,11.6,11.6,0,0,1,22,12Z"
                   fill="none"
                   stroke="#fff"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                 />
                 <circle
                   cx="12"
@@ -426,7 +438,7 @@ export default function Home() {
                   r="3"
                   fill="none"
                   stroke="#fff"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                 />
               </svg>
             </a>
@@ -445,7 +457,7 @@ export default function Home() {
                   d="M22,12a11.6,11.6,0,0,1-10,6A11.6,11.6,0,0,1,2,12,11.6,11.6,0,0,1,12,6,11.6,11.6,0,0,1,22,12Z"
                   fill="none"
                   stroke="#fff"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                 />
                 <circle
                   cx="12"
@@ -453,7 +465,7 @@ export default function Home() {
                   r="3"
                   fill="none"
                   stroke="#fff"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                 />
               </svg>
             </a>
@@ -472,7 +484,7 @@ export default function Home() {
                   d="M22,12a11.6,11.6,0,0,1-10,6A11.6,11.6,0,0,1,2,12,11.6,11.6,0,0,1,12,6,11.6,11.6,0,0,1,22,12Z"
                   fill="none"
                   stroke="#fff"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                 />
                 <circle
                   cx="12"
@@ -480,7 +492,7 @@ export default function Home() {
                   r="3"
                   fill="none"
                   stroke="#fff"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                 />
               </svg>
             </a>
@@ -499,7 +511,7 @@ export default function Home() {
                   d="M22,12a11.6,11.6,0,0,1-10,6A11.6,11.6,0,0,1,2,12,11.6,11.6,0,0,1,12,6,11.6,11.6,0,0,1,22,12Z"
                   fill="none"
                   stroke="#fff"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                 />
                 <circle
                   cx="12"
@@ -507,19 +519,23 @@ export default function Home() {
                   r="3"
                   fill="none"
                   stroke="#fff"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                 />
               </svg>
             </a>
-            <img
+            <Image
               className="sand-1"
-              src="https://andyhardy.co/assets/img/sand-1.png"
+              src={sand1}
               width="373"
+              height={373}
+              alt={sand1}
             />
-            <img
+            <Image
               className="sand-2"
-              src="https://andyhardy.co/assets/img/sand-2.png"
+              src={sand2}
               width="373"
+              height={373}
+              alt={sand2}
             />
           </div>
           <div className="wrap-text">
@@ -529,7 +545,7 @@ export default function Home() {
             >
               <h3>View portfolio</h3>
               <svg width="16" height="16">
-                <g stroke="#FFF" fill="none" fill-rule="evenodd">
+                <g stroke="#FFF" fill="none" fillRule="evenodd">
                   <path d="M9.414 2.343L15.071 8l-5.657 5.657M15.071 8H.93" />
                 </g>
               </svg>
@@ -552,9 +568,11 @@ export default function Home() {
               hello@andyhardy.co
             </a>
             <div className="logo-row">
-              <img
-                src="https://andyhardy.co/assets/img/logo-andy.png"
+              <Image
+                src={logo}
                 height="23"
+                width={80}
+                alt={logo}
               />
             </div>
             <div className="credits-row">
