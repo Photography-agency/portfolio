@@ -1833,6 +1833,9 @@ header .parallax .layer.fade-in.appear {
   padding: 0 10px;
 }
 
+.filter .tags li{
+  cursor: pointer;
+}
 .filter .tags li a {
   float: left;
   height: 50px;
@@ -2912,4 +2915,57 @@ footer a,
 .pswp__error-msg a {
   color: #ccc;
   text-decoration: underline;
+}
+
+/* galary css */
+.my-masonry-grid {
+  display: flex;
+  margin-left: -20px; /* gutter size offset */
+  width: auto;
+}
+
+.my-masonry-grid_column {
+  padding-left: 20px; /* gutter size */
+  background-clip: padding-box;
+}
+
+.my-masonry-grid_column > img {
+  width: 100%;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+}
+
+.carousel .arrow-prev,
+.carousel .arrow-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 2em;
+  cursor: pointer;
+}
+
+.carousel .arrow-prev {
+  left: 20px;
+}
+
+.carousel .arrow-next {
+  right: 20px;
 }
