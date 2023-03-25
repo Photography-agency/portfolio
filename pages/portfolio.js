@@ -1,24 +1,15 @@
 import Head from "next/head";
 import Link from "next/link";
 import Script from "next/script";
-import React, { useState } from "react";
-
-
-
+import { useState } from "react";
 import Image from "next/image";
-
 import GalleryCom from "../components/Home/GalleryCom";
+import logo from "/public/img/logo-andy.png"
 
-const images = [
-  { id: 1, src: "https://picsum.photos/500/300?random=2", category: "nature" },
-  { id: 2, src: "https://picsum.photos/500/800?random=2", category: "city" },
-  { id: 3, src: "https://picsum.photos/500/300?random=9", category: "nature" },
-  { id: 4, src: "https://picsum.photos/600/900?random=6", category: "city" },
-  { id: 5, src: "https://picsum.photos/400/600?random=15", category: "nature" },
-  { id: 6, src: "https://picsum.photos/500/600?random=2", category: "city" },
-];
 
-const portfolio = () => {
+
+
+const Portfolio = () => {
   const [isActive, setIsActive] = useState(false);
   const toggleClass = () => {
     setIsActive(!isActive);
@@ -50,12 +41,15 @@ const portfolio = () => {
       <main className={isActive ? "active" : ""} id="portfolio">
         <div className="black-overlay"></div>
         <div className="navigation-fade"></div>
-        <a href="https://andyhardy.co" className="logo animatelink">
-          <img
-            src="https://andyhardy.co/assets/img/logo-andy.png"
-            height="23"
+        <Link href="#" className="logo animatelink">
+          <Image
+            src={logo}
+            alt={logo}
+            height={23}
+            width={80}
           />
-        </a>
+          
+        </Link>
         <nav className={isActive ? "active" : ""}>
           <div
             className="background-image"
@@ -84,31 +78,31 @@ const portfolio = () => {
               </Link>
             </li>
             <div className="external-links">
-              <a href="https://emble.studio/" target="_blank">
+              <Link href="https://emble.studio/" target="_blank">
                 <h3>Commercial Work</h3>
                 <svg width="12" height="12">
                   <g stroke="#FFF" fill="none" fillRule="evenodd">
                     <path d="M3 1h8v8M11 1L1 11" />
                   </g>
                 </svg>
-              </a>
-              <a href="https://momentsinaminute.com/" target="_blank">
+              </Link>
+              <Link href="https://momentsinaminute.com/" target="_blank">
                 <h3>Education</h3>
                 <svg width="12" height="12">
                   <g stroke="#FFF" fill="none" fillRule="evenodd">
                     <path d="M3 1h8v8M11 1L1 11" />
                   </g>
                 </svg>
-              </a>
-              <a href="/film-luts">
+              </Link>
+              <Link href="/film-luts">
                 <h3>My presets</h3>
                 <svg width="12" height="12">
                   <g stroke="#FFF" fill="none" fillRule="evenodd">
                     <path d="M3 1h8v8M11 1L1 11" />
                   </g>
                 </svg>
-              </a>
-              <a
+              </Link>
+              <Link
                 href="https://andrewhardy.pixieset.com/felanprints/"
                 target="_blank"
               >
@@ -118,13 +112,13 @@ const portfolio = () => {
                     <path d="M3 1h8v8M11 1L1 11" />
                   </g>
                 </svg>
-              </a>
+              </Link>
             </div>
           </ul>
         </nav>
-        <a href="mailto:hello@andyhardy.co" className="btn nav-cta-btn">
+        <Link href="mailto:hello@andyhardy.co" className="btn nav-cta-btn">
           <span>Get in touch</span>
-        </a>
+        </Link>
         <div
           className={isActive ? "nav-icon active" : "nav-icon"}
           onClick={toggleClass}
@@ -133,7 +127,7 @@ const portfolio = () => {
         </div>
         {/* Social Icon */}
         <div className="social-ico-block">
-          <a
+          <Link
             href="https://www.instagram.com/"
             target="_blank"
             className="social-ico"
@@ -143,8 +137,8 @@ const portfolio = () => {
               <path d="M12,6.865A5.135,5.135,0,1,0,17.135,12,5.135,5.135,0,0,0,12,6.865Zm0,8.468A3.333,3.333,0,1,1,15.333,12,3.333,3.333,0,0,1,12,15.333Z" />
               <circle cx="17.338" cy="6.662" r="1.2" />
             </svg>
-          </a>
-          <a
+          </Link>
+          <Link
             href="https://vimeo.com/andrewhardy"
             target="_blank"
             className="social-ico"
@@ -152,8 +146,8 @@ const portfolio = () => {
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path d="M20.983,7.812q-.119,2.629-3.671,7.207Q13.636,19.8,11.1,19.8c-1.057,0-1.934-.971-2.665-2.911L6.992,11.55q-.81-2.907-1.734-2.909a5.559,5.559,0,0,0-1.411.849L3,8.4Q4.334,7.224,5.626,6.052A5.952,5.952,0,0,1,8.291,4.433q2.1-.2,2.586,2.878.522,3.323.728,4.13.606,2.757,1.332,2.756.564,0,1.7-1.789a7.043,7.043,0,0,0,1.208-2.721c.108-1.028-.3-1.546-1.21-1.546a3.277,3.277,0,0,0-1.333.293c.89-2.9,2.576-4.317,5.072-4.227,1.854.045,2.721,1.248,2.619,3.6Z" />
             </svg>
-          </a>
-          <a
+          </Link>
+          <Link
             href="https://www.facebook.com/"
             target="_blank"
             className="social-ico"
@@ -161,8 +155,8 @@ const portfolio = () => {
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path d="M22.06,11.987a10.061,10.061,0,1,0-11.633,9.939V14.9H7.872V11.987h2.555V9.771a3.551,3.551,0,0,1,3.8-3.915,15.427,15.427,0,0,1,2.252.2V8.529H15.211a1.454,1.454,0,0,0-1.64,1.571v1.887h2.791L15.915,14.9H13.571v7.03A10.064,10.064,0,0,0,22.06,11.987Z" />
             </svg>
-          </a>
-          <a
+          </Link>
+          <Link
             href="https://www.youtube.com/"
             target="_blank"
             className="social-ico"
@@ -170,64 +164,25 @@ const portfolio = () => {
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path d="M22.062,6.927A2.631,2.631,0,0,0,20.234,5.1c-1.637-.439-8.224-.439-8.224-.439S5.439,4.652,3.785,5.1A2.631,2.631,0,0,0,1.957,6.927,27.322,27.322,0,0,0,1.5,12.009a27.287,27.287,0,0,0,.456,5.062A2.631,2.631,0,0,0,3.785,18.9c1.635.44,8.225.44,8.225.44s6.57,0,8.224-.44a2.631,2.631,0,0,0,1.828-1.827,27.364,27.364,0,0,0,.438-5.062A27.406,27.406,0,0,0,22.062,6.927ZM9.907,15.152v-6.3l5.483,3.153Z" />
             </svg>
-          </a>
+          </Link>
         </div>
         {/* Logo */}
         <div className="home-overlay fade-in appear">
-          <img
-            src="https://andyhardy.co/assets/img/logo-andy.png"
-            height="23"
+          <Image
+             src={logo}
+             alt={logo}
+             height={23}
+             width={80}
           />
         </div>
-        <Link href="/" className="logo-home animatelink">
-          {/* <h3 className="logo-name">Andrew Hardy</h3> */}
-          {/* <img
-            src="https://andyhardy.co/assets/img/logo-andy.png"
-            height="23"
-          /> */}
-        </Link>
+        
         {/* Filter */}
-        {/* <Image src={img1} width="500" height={500} alt="testing"></Image> */}
-
-        {/* <section className="filter">
-          <div className="wrap">
-            <ul className="tags">
-              <li>
-                <Link className="animatelink active" href="/portfolio">
-                  all
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="animatelink"
-                  href="/portfolio/tag:accommodation"
-                >
-                  accommodation{" "}
-                </Link>
-              </li>
-              <li>
-                <Link className="animatelink" href="/portfolio/tag:adventure">
-                  adventure{" "}
-                </Link>
-              </li>
-              <li>
-                <Link className="animatelink" href="/portfolio/tag:people">
-                  people{" "}
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </section> */}
-        {/* Grid */}
-        <GalleryCom></GalleryCom>
-        {/* <GalleryPopup
-        isOpen={popupOpen}
-        images={images}
-        selectedImageIndex={selectedImageIndex}
-        onRequestClose={handlePopupClose}
-      /> */}
         
 
+        
+        {/* Grid */}
+        <GalleryCom></GalleryCom>
+        
         {/* Footer */}
         <footer>
           <div
@@ -241,27 +196,29 @@ const portfolio = () => {
           <div className="top-fade"></div>
           <div className="left-fade"></div>
           <div className="wrap-text">
-            <a href="mailto:hello@andyhardy.co" className="mail">
+            <Link href="mailto:hello@andyhardy.co" className="mail">
               hello@andyhardy.co
-            </a>
+            </Link>
             <div className="logo-row">
-              <img
-                src="https://andyhardy.co/assets/img/logo-andy.png"
-                height="23"
+              <Image
+                 src={logo}
+                 alt={logo}
+                 height={23}
+                 width={80}
               />
             </div>
             <div className="credits-row">
               <li>© 2023 Andrew Hardy</li>
               <li>/</li>
               <li>
-                <a href="https://www.dennissnellenberg.nl/en" target="_blank">
+                <Link href="https://www.dennissnellenberg.nl/en" target="_blank">
                   Code by Dennis
-                </a>
+                </Link>
               </li>
             </div>
           </div>
           <div className="social-ico-block">
-            <a
+            <Link
               href="https://www.instagram.com/andrewhardy/"
               target="_blank"
               className="social-ico"
@@ -271,8 +228,8 @@ const portfolio = () => {
                 <path d="M12,6.865A5.135,5.135,0,1,0,17.135,12,5.135,5.135,0,0,0,12,6.865Zm0,8.468A3.333,3.333,0,1,1,15.333,12,3.333,3.333,0,0,1,12,15.333Z" />
                 <circle cx="17.338" cy="6.662" r="1.2" />
               </svg>
-            </a>
-            <a
+            </Link>
+            <Link
               href="https://vimeo.com/andrewhardy"
               target="_blank"
               className="social-ico"
@@ -280,8 +237,8 @@ const portfolio = () => {
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path d="M20.983,7.812q-.119,2.629-3.671,7.207Q13.636,19.8,11.1,19.8c-1.057,0-1.934-.971-2.665-2.911L6.992,11.55q-.81-2.907-1.734-2.909a5.559,5.559,0,0,0-1.411.849L3,8.4Q4.334,7.224,5.626,6.052A5.952,5.952,0,0,1,8.291,4.433q2.1-.2,2.586,2.878.522,3.323.728,4.13.606,2.757,1.332,2.756.564,0,1.7-1.789a7.043,7.043,0,0,0,1.208-2.721c.108-1.028-.3-1.546-1.21-1.546a3.277,3.277,0,0,0-1.333.293c.89-2.9,2.576-4.317,5.072-4.227,1.854.045,2.721,1.248,2.619,3.6Z" />
               </svg>
-            </a>
-            <a
+            </Link>
+            <Link
               href="https://www.facebook.com/groups/MomentsinaMinute"
               target="_blank"
               className="social-ico"
@@ -289,8 +246,8 @@ const portfolio = () => {
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path d="M22.06,11.987a10.061,10.061,0,1,0-11.633,9.939V14.9H7.872V11.987h2.555V9.771a3.551,3.551,0,0,1,3.8-3.915,15.427,15.427,0,0,1,2.252.2V8.529H15.211a1.454,1.454,0,0,0-1.64,1.571v1.887h2.791L15.915,14.9H13.571v7.03A10.064,10.064,0,0,0,22.06,11.987Z" />
               </svg>
-            </a>
-            <a
+            </Link>
+            <Link
               href="https://www.youtube.com/channel/UCPtO-spPgWBirAs_Qa6OIew/"
               target="_blank"
               className="social-ico"
@@ -298,7 +255,7 @@ const portfolio = () => {
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path d="M22.062,6.927A2.631,2.631,0,0,0,20.234,5.1c-1.637-.439-8.224-.439-8.224-.439S5.439,4.652,3.785,5.1A2.631,2.631,0,0,0,1.957,6.927,27.322,27.322,0,0,0,1.5,12.009a27.287,27.287,0,0,0,.456,5.062A2.631,2.631,0,0,0,3.785,18.9c1.635.44,8.225.44,8.225.44s6.57,0,8.224-.44a2.631,2.631,0,0,0,1.828-1.827,27.364,27.364,0,0,0,.438-5.062A27.406,27.406,0,0,0,22.062,6.927ZM9.907,15.152v-6.3l5.483,3.153Z" />
               </svg>
-            </a>
+            </Link>
           </div>{" "}
         </footer>
       </main>
@@ -306,4 +263,4 @@ const portfolio = () => {
   );
 };
 
-export default portfolio;
+export default Portfolio;

@@ -1,16 +1,8 @@
+import Image from "next/image";
+import Link from "next/link";
 import React, { useState } from "react";
 import Masonry from "react-masonry-css";
-
-import img1 from "/public/img/img/andy-hardy-people-accomodation-photographer-filmmaker-australia-1-400x400-q72.jpg";
-import img2 from "/public/img/img/andy-hardy-people-accomodation-photographer-filmmaker-australia-10-400x400-q72.jpg";
-import img3 from "/public/img/img/andy-hardy-people-accomodation-photographer-filmmaker-australia-26-400x400-q72.jpg";
-import img4 from "/public/img/img/andy-hardy-people-accomodation-photographer-filmmaker-australia-24-400x400-q72.jpg";
-import img5 from "/public/img/img/andy-hardy-people-adventure-photographer-filmmaker-australia-34-400x400-q72.jpg";
-import Link from "next/link";
-import { Gallery } from "react-grid-gallery";
-import Lightbox from "react-image-lightbox";
-import "react-image-lightbox/style.css";
-
+import Modal from "./Modal";
 
 const breakpointColumnsObj = {
   default: 4,
@@ -19,36 +11,102 @@ const breakpointColumnsObj = {
   500: 1,
 };
 const images = [
-  { id: 1, src: "https://picsum.photos/500/300?random=2", category: "nature" },
-  { id: 2, src: "https://picsum.photos/500/800?random=2", category: "city" },
-  { id: 3, src: "https://picsum.photos/500/300?random=9", category: "nature" },
-  { id: 4, src: "https://picsum.photos/600/900?random=6", category: "city" },
-  { id: 5, src: "https://picsum.photos/400/600?random=15", category: "nature" },
-  { id: 6, src: "https://picsum.photos/500/600?random=36", category: "city" },
-  { id: 7, src: "https://picsum.photos/500/600?random=96", category: "city" },
+  {
+    id: 1,
+    src: "https://picsum.photos/500/300?random=2",
+    category: "nature",
+    width: 500,
+    height: 300,
+  },
+  {
+    id: 2,
+    src: "https://picsum.photos/500/800?random=2",
+    category: "city",
+    width: 500,
+    height: 800,
+  },
+  {
+    id: 3,
+    src: "https://picsum.photos/500/300?random=9",
+    category: "nature",
+    width: 500,
+    height: 300,
+  },
+  {
+    id: 4,
+    src: "https://picsum.photos/600/900?random=6",
+    category: "city",
+    width: 600,
+    height: 900,
+  },
+  {
+    id: 5,
+    src: "https://picsum.photos/400/600?random=15",
+    category: "nature",
+    width: 400,
+    height: 600,
+  },
+  {
+    id: 6,
+    src: "https://picsum.photos/500/600?random=36",
+    category: "city",
+    width: 500,
+    height: 600,
+  },
+  {
+    id: 7,
+    src: "https://picsum.photos/500/600?random=96",
+    category: "city",
+    width: 500,
+    height: 600,
+  },
   {
     id: 8,
     src: "https://picsum.photos/800/1200?random=85",
     category: "nature",
+    width: 800,
+    height: 1200,
   },
-  { id: 9, src: "https://picsum.photos/500/900?random=28", category: "city" },
+  {
+    id: 9,
+    src: "https://picsum.photos/500/900?random=28",
+    category: "city",
+    width: 500,
+    height: 900,
+  },
   {
     id: 10,
     src: "https://picsum.photos/500/600?random=32",
     category: "nature",
+    width: 500,
+    height: 600,
   },
-  { id: 11, src: "https://picsum.photos/500/600?random=17", category: "city" },
+  {
+    id: 11,
+    src: "https://picsum.photos/500/600?random=17",
+    category: "city",
+    width: 500,
+    height: 600,
+  },
   {
     id: 12,
     src: "https://picsum.photos/600/600?random=62",
     category: "nature",
+    width: 500,
+    height: 600,
   },
-  { id: 13, src: "https://picsum.photos/400/900?random=42", category: "city" },
+  {
+    id: 13,
+    src: "https://picsum.photos/400/900?random=42",
+    category: "city",
+    width: 400,
+    height: 900,
+  },
 ];
 
 const GalleryCom = () => {
   const [filter, setFilter] = useState("all");
-  
+
   const handleFilterChange = (category) => {
     setFilter(category);
   };
@@ -57,80 +115,104 @@ const GalleryCom = () => {
     filter === "all"
       ? images
       : images.filter((image) => image.category === filter);
-  
-  
-  const [index, setIndex] = useState(-1);
 
-  const currentImage = filteredImages[index];
-  console.log(currentImage);
-  const nextIndex = (index + 1) % filteredImages.length;
-  const nextImage = filteredImages[nextIndex] || currentImage;
-  const prevIndex = (index + filteredImages.length - 1) % filteredImages.length;
-  const prevImage = filteredImages[prevIndex] || currentImage;
+  const [clickedImg, setClickedImg] = useState(null);
 
-  const handleClick = (index, item) => {
-    console.log(index);
-    setIndex(index);
+  const [currentIndex, setCurrentIndex] = useState(null);
+
+  const handleClick = (item, index) => {
+    setCurrentIndex(index);
+    setClickedImg(item);
   };
-  
-  const handleClose = () => setIndex(-1);
-  const handleMovePrev = () => setIndex(prevIndex);
-  const handleMoveNext = () => setIndex(nextIndex);
+
+  const handelRotationRight = () => {
+    const totalLength = filteredImages.length;
+    if (currentIndex + 1 >= totalLength) {
+      setCurrentIndex(0);
+      const newUrl = filteredImages[0];
+      setClickedImg(newUrl);
+      return;
+    }
+    const newIndex = currentIndex + 1;
+    const newUrl = filteredImages.filter((item) => {
+      return filteredImages.indexOf(item) === newIndex;
+    });
+    const newItem = newUrl[0];
+    setClickedImg(newItem);
+    setCurrentIndex(newIndex);
+  };
+
+  const handelRotationLeft = () => {
+    const totalLength = filteredImages.length;
+    if (currentIndex === 0) {
+      setCurrentIndex(totalLength - 1);
+      const newUrl = filteredImages[totalLength - 1];
+      setClickedImg(newUrl);
+      return;
+    }
+    const newIndex = currentIndex - 1;
+    const newUrl = filteredImages.filter((item) => {
+      return filteredImages.indexOf(item) === newIndex;
+    });
+    const newItem = newUrl[0];
+    setClickedImg(newItem);
+    setCurrentIndex(newIndex);
+  };
 
   return (
     <>
       <div className="filter">
         <div className="wrap">
-          <ul className="tags">
+          <ul className="tags" key="tags">
             <li onClick={() => handleFilterChange("all")} key={1}>
-              <a>All</a>
+              All
             </li>
             <li onClick={() => handleFilterChange("nature")} key={2}>
-              <a>Nature</a>
+              Nature
             </li>
             <li onClick={() => handleFilterChange("city")} key={3}>
-              <a>City</a>
+              City
             </li>
           </ul>
         </div>
       </div>
-
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column"
-      >
-        {filteredImages.map((image, index) => (
-          <>
-            <img
-              key={image.index}
-              src={image.src}
-              alt={image.category}
-              onClick={() => handleClick(index)}
+      <>
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column"
+        >
+          {filteredImages.map((image, index) => (
+            <>
+              <Image
+                key={image.index}
+                src={image.src}
+                width={image.width}
+                height={image.height}
+                style={{width:"100%",height:"auto"}}
+                alt={image.category}
+                onClick={() => handleClick(image, index)}
+              />
+            </>
+          ))}
+        </Masonry>
+        <div>
+          {clickedImg && (
+            <Modal
+              clickedImg={clickedImg}
+              handelRotationRight={handelRotationRight}
+              setClickedImg={setClickedImg}
+              handelRotationLeft={handelRotationLeft}
             />
-          </>
-        ))}
-      </Masonry>
+          )}
+        </div>
+      </>
       {/* <Gallery
         images={filteredImages}
         onClick={handleClick}
         enableImageSelection={false}
         className="my-masonry-grid_column"
       /> */}
-      {currentImage && (
-        /* @ts-ignore */
-        <Lightbox
-          
-          mainSrcThumbnail={currentImage.src}
-          nextSrc={nextImage.src}
-          nextSrcThumbnail={nextImage.src}
-          prevSrc={prevImage.src}
-          prevSrcThumbnail={prevImage.src}
-          onCloseRequest={handleClose}
-          onMovePrevRequest={handleMovePrev}
-          onMoveNextRequest={handleMoveNext}
-        />
-      )}
     </>
   );
 };
