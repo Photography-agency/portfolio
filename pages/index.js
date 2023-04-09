@@ -56,7 +56,7 @@ export default function Home() {
               </Link>
             </li>
             <li className="big-li ">
-              <Link href="/Portfolio" className="animatelink">
+              <Link href="/portfolio" className="animatelink">
                 Portfolio
               </Link>
             </li>

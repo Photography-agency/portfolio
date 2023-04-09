@@ -16,9 +16,9 @@ const Modal = ({
   return (
     <>
       <div className="overlay dismiss " onClick={handleClick}>
-        <Image src={clickedImg.src} style={{width:"auto",height:"auto"}} width={clickedImg.width}
-                height={clickedImg.height}
-                alt={clickedImg.category} />
+        <Image src={clickedImg.attributes.img.data[0].attributes.url} style={{width:"auto",height:"auto"}} width={clickedImg.attributes.img.data[0].attributes.width}
+                height={clickedImg.attributes.img.data[0].attributes.height}
+                alt={clickedImg.attributes.category} />
 
         <span className="dismiss" onClick={handleClick}>
           Close
